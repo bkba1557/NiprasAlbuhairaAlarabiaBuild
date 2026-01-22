@@ -3,13 +3,14 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "2d47b03faf320dc1491dc77c6bbdb92c",
-"assets/AssetManifest.bin.json": "698c4163292f02f4fe88a1b0b24a1030",
+const RESOURCES = {"assets/AssetManifest.bin": "0e97a70343ad96e643e1e20782d605e9",
+"assets/AssetManifest.bin.json": "5abbb99199caeea7de357b26d8c67afa",
 "assets/assets/fonts/Arial.ttf": "fa3228aadde0db988e1822c2f736c131",
 "assets/assets/fonts/Cairo-Bold.ttf": "08f051a1822e014b22374926f1406d01",
 "assets/assets/fonts/Cairo-Regular.ttf": "5dacd3d88fa294c5c6263d4041a34935",
 "assets/assets/images/logo.png": "23898b2fc9900115801688251fd41646",
 "assets/assets/images/logo1.png": "f12948e1c0a39f5e98da7a503084ba90",
+"assets/assets/nibras_page.html": "8168d47c04e36187a991e897cbba942e",
 "assets/FontManifest.json": "793dfde5363a1d6d684c0e6d50f54645",
 "assets/fonts/MaterialIcons-Regular.otf": "9a663f7db97c4f75105a749e08e98701",
 "assets/NOTICES": "e0febe8476615cf9ba727cef6cf9e38c",
@@ -34,14 +35,14 @@ const RESOURCES = {"assets/AssetManifest.bin": "2d47b03faf320dc1491dc77c6bbdb92c
 "canvaskit/skwasm_heavy.wasm": "b0be7910760d205ea4e011458df6ee01",
 "favicon.png": "f12948e1c0a39f5e98da7a503084ba90",
 "flutter.js": "24bc71911b75b5f8135c949e27a2984e",
-"flutter_bootstrap.js": "796aa0389dfe51106c2dd1ae7b5888aa",
+"flutter_bootstrap.js": "30a22365c2355194e22236ef9536c664",
 "icons/Icon-192.png": "364c177967135ce7a0261da8473927b6",
 "icons/Icon-512.png": "364c177967135ce7a0261da8473927b6",
 "icons/Icon-maskable-192.png": "f12948e1c0a39f5e98da7a503084ba90",
 "icons/Icon-maskable-512.png": "f12948e1c0a39f5e98da7a503084ba90",
 "index.html": "8361c4b0db6d30cfcb0a871870806d41",
 "/": "8361c4b0db6d30cfcb0a871870806d41",
-"main.dart.js": "7e579aac818b2c27376501072c2792aa",
+"main.dart.js": "eb4d094fa2bc431780f4d440dfcee7ec",
 "manifest.json": "7ea68de8374ab40046611d82db0bc5d2",
 "version.json": "6ee0f3e6750824cc8c9a0e183e87770e"};
 // The application shell files that are downloaded before a service worker can
