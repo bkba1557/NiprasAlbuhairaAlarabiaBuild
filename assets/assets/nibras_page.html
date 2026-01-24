@@ -1549,18 +1549,7 @@
         // تحديث السنة تلقائياً
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        function employeeLogin() {
-            // إرسال رسالة إلى Flutter
-            window.parent.postMessage('employee_login', '*');
-
-            // عرض إشعار
-            showNotification('جارٍ التوجيه إلى بوابة الدخول للموظفين...');
-
-            setTimeout(() => {
-                showNotification('تم التوجيه إلى النظام الداخلي للموظفين');
-            }, 1500);
-        }
-
+      
         // عرض إشعار
         function showNotification(message) {
             const notification = document.getElementById('notification');
@@ -1630,7 +1619,54 @@
                 shape.style.transform = `translateY(${rate * (index + 1) * 0.03}px)`;
             });
         });
+
     </script>
+<script>
+    /* =========================
+       🔐 TOKEN CHECK
+    ========================= */
+    function hasValidToken() {
+        const token = localStorage.getItem('auth_token');
+        if (!token) return false;
+
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            return payload.exp * 1000 > Date.now();
+        } catch (e) {
+            return false;
+        }
+    }
+
+    /* =========================
+       🔑 LOGIN BUTTON
+    ========================= */
+    function employeeLogin() {
+        if (hasValidToken()) {
+            showNotification('تم التعرف على جلسة نشطة، جاري فتح النظام...');
+        } else {
+            showNotification('جارٍ التوجيه إلى بوابة الدخول للموظفين...');
+        }
+
+        window.parent.postMessage('employee_login', '*');
+    }
+
+    /* =========================
+       🚀 AUTO LOGIN ON LOAD
+    ========================= */
+    window.addEventListener('load', () => {
+        if (hasValidToken()) {
+            showNotification('تم تسجيل الدخول تلقائيًا');
+
+            // إخفاء زر الدخول
+            const btn = document.querySelector('.login-btn-container');
+            if (btn) btn.style.display = 'none';
+
+            window.parent.postMessage('employee_login', '*');
+        }
+    });
+</script>
+
+  
 </body>
 
 </html>
