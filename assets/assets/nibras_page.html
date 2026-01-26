@@ -1637,6 +1637,29 @@
         }
     }
 
+    function toggleLoginButton(show) {
+        const btn = document.querySelector('.login-btn-container');
+        if (!btn) return;
+        btn.style.display = show ? '' : 'none';
+    }
+
+    function updateLoginState({ notifyOnLogin = false, notifyOnLogout = false } = {}) {
+        const valid = hasValidToken();
+        if (valid) {
+            toggleLoginButton(false);
+            if (notifyOnLogin) {
+                showNotification('تم تسجيل الدخول تلقائيا');
+            }
+            window.parent.postMessage('employee_login', '*');
+        } else {
+            toggleLoginButton(true);
+            if (notifyOnLogout) {
+                showNotification('تم تسجيل الخروج');
+            }
+        }
+    }
+
+
     /* =========================
        🔑 LOGIN BUTTON
     ========================= */
@@ -1654,15 +1677,18 @@
        🚀 AUTO LOGIN ON LOAD
     ========================= */
     window.addEventListener('load', () => {
-        if (hasValidToken()) {
-            showNotification('تم تسجيل الدخول تلقائيًا');
+        updateLoginState({ notifyOnLogin: true });
+    });
 
-            // إخفاء زر الدخول
-            const btn = document.querySelector('.login-btn-container');
-            if (btn) btn.style.display = 'none';
-
-            window.parent.postMessage('employee_login', '*');
+    window.addEventListener('storage', (event) => {
+        if (event.key !== 'auth_token') {
+            return;
         }
+
+        updateLoginState({
+            notifyOnLogin: !!event.newValue,
+            notifyOnLogout: event.newValue === null,
+        });
     });
 </script>
 
