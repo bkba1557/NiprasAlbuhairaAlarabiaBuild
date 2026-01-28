@@ -2,17 +2,17 @@
 <html lang="ar">
 
 <head>
-  <!-- Base URL -->
+  <!-- Base URL (Flutter) -->
   <base href="/">
 
   <!-- Basic Meta -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <!-- ✅ Title (مهم جدًا لجوجل) -->
+  <!-- ✅ Title (SEO) -->
   <title>نظام نبراس لإدارة وتتبع الطلبات | شركة البحيرة العربية</title>
 
-  <!-- ✅ Meta Description (الوصف اللي هيظهر في Google) -->
+  <!-- ✅ Meta Description -->
   <meta name="description"
     content="نظام نبراس من شركة البحيرة العربية لإدارة وتتبع طلبات الوقود، الإشراف على العمليات، وتحسين كفاءة التوزيع في الوقت الحقيقي.">
 
@@ -20,19 +20,20 @@
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- iOS / PWA -->
+  <!-- PWA / Mobile -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="نظام نبراس">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <!-- ✅ Favicon (Google Approved) -->
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/icons/Icon-192.png">
 
   <!-- Manifest -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="/manifest.json">
 
-  <!-- Optional: Flutter renderer -->
+  <!-- Flutter renderer -->
   <meta name="flutter-web-renderer" content="html">
 </head>
 
@@ -56,7 +57,7 @@
     const analytics = getAnalytics(app);
   </script>
 
-  <!-- Flutter -->
+  <!-- Flutter bootstrap -->
   <script src="flutter_bootstrap.js" async></script>
 </body>
 
