@@ -10,7 +10,8 @@
         content="نظام نبراس من شركة البحيرة العربية لإدارة وتتبع طلبات الوقود، الإشراف على العمليات، وتحسين كفاءة التوزيع في الوقت الحقيقي.">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Hind:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -1006,6 +1007,431 @@
                 transform: translateX(100%);
             }
         }
+        /* Theme + Language Enhancements */
+        @property --accent-hue {
+            syntax: '<number>';
+            inherits: true;
+            initial-value: 212;
+        }
+
+        :root {
+            --primary-blue: hsl(var(--accent-hue) 65% 34%);
+            --dark-blue: hsl(var(--accent-hue) 80% 18%);
+            --light-blue: hsl(calc(var(--accent-hue) + 16) 85% 60%);
+            --accent-blue: hsl(calc(var(--accent-hue) + 6) 92% 56%);
+            --success-green: hsl(145 60% 45%);
+            --warning-orange: hsl(32 90% 55%);
+            --danger-red: hsl(4 75% 55%);
+            --text-light: #ffffff;
+            --text-gray: #dfe7f5;
+            --text-dark: #0b1b3a;
+            --page-bg: #f6f8fb;
+            --page-bg-2: rgba(15, 30, 70, 0.05);
+            --surface-bg: rgba(255, 255, 255, 0.85);
+            --surface-border: rgba(15, 30, 70, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(15, 30, 70, 0.12);
+            --heading: #0b1b3a;
+            --muted: #52607a;
+            --text: #1a2745;
+            --nav-bg: rgba(255, 255, 255, 0.85);
+            --footer-bg: linear-gradient(135deg, rgba(15, 25, 65, 0.95) 0%, rgba(22, 40, 110, 0.92) 100%);
+        }
+
+        body {
+            --accent-hue: 212;
+            background: var(--page-bg);
+            color: var(--text);
+            direction: inherit;
+            position: relative;
+            transition: background 0.8s ease, color 0.6s ease;
+            animation: hueFlow 18s ease-in-out infinite alternate;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(41, 121, 255, 0.18), transparent 40%),
+                radial-gradient(circle at 80% 30%, rgba(33, 150, 243, 0.18), transparent 40%),
+                linear-gradient(120deg, rgba(120, 160, 255, 0.12), rgba(0, 120, 255, 0.08));
+            background-size: 200% 200%;
+            animation: gradientShift 18s ease-in-out infinite;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        body[data-theme="light"] {
+            --accent-hue: 212;
+            --page-bg: #f6f8fb;
+            --page-bg-2: rgba(15, 30, 70, 0.05);
+            --surface-bg: rgba(255, 255, 255, 0.92);
+            --surface-border: rgba(15, 30, 70, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(15, 30, 70, 0.12);
+            --heading: #0b1b3a;
+            --muted: #51607a;
+            --text: #1a2745;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --footer-bg: linear-gradient(135deg, rgba(15, 30, 70, 0.96) 0%, rgba(28, 55, 140, 0.92) 100%);
+        }
+
+        body[data-theme="default"] {
+            --accent-hue: 218;
+            --page-bg: linear-gradient(135deg, rgba(13, 20, 82, 1) 0%, rgba(26, 35, 126, 1) 100%);
+            --page-bg-2: rgba(0, 0, 0, 0.12);
+            --surface-bg: rgba(255, 255, 255, 0.08);
+            --surface-border: rgba(255, 255, 255, 0.12);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --heading: #e3f2fd;
+            --muted: #bbdefb;
+            --text: #ffffff;
+            --nav-bg: linear-gradient(135deg, rgba(13, 20, 82, 0.98) 0%, rgba(26, 35, 126, 0.95) 100%);
+            --footer-bg: linear-gradient(135deg, rgba(13, 20, 82, 0.95) 0%, rgba(26, 35, 126, 0.9) 100%);
+        }
+
+        body[data-theme="dark"] {
+            --accent-hue: 210;
+            --page-bg: radial-gradient(circle at 20% 20%, rgba(25, 35, 80, 0.95), rgba(7, 10, 30, 1) 60%);
+            --page-bg-2: rgba(255, 255, 255, 0.03);
+            --surface-bg: rgba(255, 255, 255, 0.06);
+            --surface-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --heading: #e2ecff;
+            --muted: #a9c3e6;
+            --text: #f6f8ff;
+            --nav-bg: rgba(8, 12, 40, 0.9);
+            --footer-bg: linear-gradient(135deg, rgba(8, 12, 40, 0.95) 0%, rgba(14, 20, 70, 0.9) 100%);
+        }
+
+        body.theme-transition * {
+            transition: background-color 0.7s ease, color 0.7s ease, border-color 0.7s ease, box-shadow 0.7s ease;
+        }
+
+        .navbar {
+            background: var(--nav-bg);
+            border-bottom-color: var(--accent-blue);
+        }
+
+        .logo-main {
+            background: linear-gradient(to right, var(--accent-blue), var(--light-blue));
+        }
+
+        .logo-sub {
+            color: var(--muted);
+        }
+
+        .hero h1 {
+            color: var(--heading);
+        }
+
+        .hero-subtitle {
+            color: var(--muted);
+            background: var(--glass-bg);
+            border-color: var(--glass-border);
+        }
+
+        .section-alt {
+            background: var(--page-bg-2);
+        }
+
+        .feature-card,
+        .station-card,
+        .company-card,
+        .system-item,
+        .leader-card,
+        .companies-section,
+        .live-tracking {
+            background: var(--surface-bg);
+            border-color: var(--surface-border);
+        }
+
+        .counter-box {
+            background: var(--surface-bg);
+            border-color: var(--surface-border);
+        }
+
+        .counter-box:hover {
+            background: color-mix(in srgb, var(--accent-blue), transparent 85%);
+        }
+
+        .counter-label {
+            color: var(--muted);
+        }
+
+        .progress-bar {
+            background: color-mix(in srgb, var(--accent-blue), transparent 88%);
+        }
+
+        .company-details,
+        .card-text,
+        .leader-quote,
+        .footer-section p,
+        .footer-section a,
+        .tracking-map,
+        .stat-name,
+        .card-title {
+            color: var(--muted);
+        }
+
+        .card-title,
+        .company-name,
+        .station-info h4,
+        .leader-name,
+        .system-name {
+            color: var(--heading);
+        }
+
+        .section-title {
+            color: var(--heading);
+        }
+
+        .footer {
+            background: var(--footer-bg);
+        }
+
+        .footer-section h4,
+        .stat-number,
+        .stat-value,
+        .company-details i,
+        .station-icon,
+        .company-icon,
+        .system-icon {
+            color: var(--accent-blue);
+        }
+
+        .tracking-map {
+            border-color: var(--accent-blue);
+        }
+
+        .shape {
+            background: color-mix(in srgb, var(--accent-blue), transparent 85%);
+        }
+
+        .nav-content {
+            gap: 16px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-group-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--muted);
+            margin-inline: 6px 2px;
+            white-space: nowrap;
+        }
+
+        .segmented {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .segmented-btn {
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .segmented-btn:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-1px);
+        }
+
+        .segmented-btn.active {
+            background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+            color: #fff;
+            border-color: var(--accent-blue);
+            box-shadow: 0 6px 16px rgba(33, 150, 243, 0.35);
+        }
+
+        .hero-illustrations {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .illustration-card {
+            background: var(--surface-bg);
+            border-radius: 18px;
+            padding: 18px;
+            border: 1px solid var(--surface-border);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .illustration-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(41, 121, 255, 0.25), transparent 45%);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .line-illustration {
+            width: 100%;
+            max-width: 220px;
+            color: var(--accent-blue);
+            filter: drop-shadow(0 8px 15px rgba(15, 30, 70, 0.2));
+        }
+
+        .line-illustration .draw-path {
+            stroke-dasharray: 420;
+            stroke-dashoffset: 420;
+            animation: drawLine 3.2s ease forwards;
+        }
+
+        .illustration-card:nth-child(2) .draw-path {
+            animation-delay: 0.4s;
+        }
+
+        .illustration-card:nth-child(3) .draw-path {
+            animation-delay: 0.8s;
+        }
+
+        .illustration-caption {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--heading);
+        }
+
+        @keyframes drawLine {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes hueFlow {
+            0% {
+                --accent-hue: 205;
+            }
+
+            100% {
+                --accent-hue: 235;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 20%;
+            }
+
+            50% {
+                background-position: 100% 80%;
+            }
+
+            100% {
+                background-position: 0% 20%;
+            }
+        }
+
+        body.lang-ar,
+        body.lang-ur {
+            font-family: 'Cairo', 'Noto Naskh Arabic', 'Noto Nastaliq Urdu', sans-serif;
+        }
+
+        body.lang-en {
+            font-family: 'Poppins', 'Cairo', sans-serif;
+        }
+
+        body.lang-bn {
+            font-family: 'Noto Sans Bengali', 'Hind', 'Cairo', sans-serif;
+        }
+
+        body.lang-hi {
+            font-family: 'Noto Sans Devanagari', 'Hind', 'Cairo', sans-serif;
+        }
+
+        html[dir="ltr"] .footer-content {
+            text-align: left;
+        }
+
+        html[dir="ltr"] .footer-section h4:after {
+            right: auto;
+            left: 0;
+        }
+
+        html[dir="ltr"] .feature-card:before {
+            right: auto;
+            left: 0;
+        }
+
+        html[dir="ltr"] .leader-quote {
+            border-right: none;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        html[dir="ltr"] .footer-section a:hover {
+            transform: translateX(5px);
+        }
+
+        html[dir="ltr"] .login-btn-container {
+            left: auto;
+            right: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-actions {
+                justify-content: center;
+            }
+
+            .nav-group {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body {
+                animation: none;
+            }
+
+            .hero-bg,
+            .line-illustration .draw-path,
+            .shape {
+                animation: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -1027,10 +1453,32 @@
             <a href="#" class="logo">
                 <i class="fas fa-satellite-dish logo-icon"></i>
                 <div class="logo-text">
-                    <div class="logo-main">نظام نبراس المتكامل</div>
-                    <div class="logo-sub">شركة البحيرة العربية للنقليات</div>
+                    <div class="logo-main" data-i18n="logo.main">نظام نبراس المتكامل</div>
+                    <div class="logo-sub" data-i18n="logo.sub">شركة البحيرة العربية للنقليات</div>
                 </div>
             </a>
+            <div class="nav-actions">
+                <div class="nav-group">
+                    <span class="nav-group-label" data-i18n="ui.language">اللغة</span>
+                    <div class="segmented" role="group" aria-label="Language switcher">
+                        <button class="segmented-btn active" data-lang="ar" aria-pressed="true">العربية</button>
+                        <button class="segmented-btn" data-lang="en" aria-pressed="false">English</button>
+                        <button class="segmented-btn" data-lang="bn" aria-pressed="false">বাংলা</button>
+                        <button class="segmented-btn" data-lang="ur" aria-pressed="false">اردو</button>
+                        <button class="segmented-btn" data-lang="hi" aria-pressed="false">हिन्दी</button>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <span class="nav-group-label" data-i18n="ui.theme">المظهر</span>
+                    <div class="segmented" role="group" aria-label="Theme switcher">
+                        <button class="segmented-btn active" data-theme="light" aria-pressed="true"
+                            data-i18n="theme.light">فاتح</button>
+                        <button class="segmented-btn" data-theme="default" aria-pressed="false"
+                            data-i18n="theme.default">افتراضي</button>
+                        <button class="segmented-btn" data-theme="dark" aria-pressed="false" data-i18n="theme.dark">داكن</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -1038,8 +1486,8 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="container">
-            <h1>نظام نبراس المتكامل لإدارة النقليات</h1>
-            <p class="hero-subtitle">
+            <h1 data-i18n="hero.title">نظام نبراس المتكامل لإدارة النقليات</h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">
                 نظام متطور لإدارة وتتبع جميع عمليات النقل بمختلف أنواعها، مع تركيز خاص
                 على نقل المحروقات عبر شبكة محطات "شريان الخط" البالغة 30 محطة موزعة
                 في جميع أنحاء المملكة. النظام يدعم 40+ نظام فرعي ويخدم 500+ شركة نقل شريكة.
@@ -1049,19 +1497,60 @@
             <div class="counter-container">
                 <div class="counter-box">
                     <div class="counter" id="stationsCounter">30</div>
-                    <div class="counter-label">محطة وقود</div>
+                    <div class="counter-label" data-i18n="counter.stations">محطة وقود</div>
                 </div>
                 <div class="counter-box">
                     <div class="counter" id="companiesCounter">500+</div>
-                    <div class="counter-label">شركة نقل</div>
+                    <div class="counter-label" data-i18n="counter.companies">شركة نقل</div>
                 </div>
                 <div class="counter-box">
                     <div class="counter" id="vehiclesCounter">1500+</div>
-                    <div class="counter-label">مركبة نشطة</div>
+                    <div class="counter-label" data-i18n="counter.vehicles">مركبة نشطة</div>
                 </div>
                 <div class="counter-box">
                     <div class="counter" id="systemsCounter">40+</div>
-                    <div class="counter-label">نظام فرعي</div>
+                    <div class="counter-label" data-i18n="counter.systems">نظام فرعي</div>
+                </div>
+            </div>
+
+            <div class="hero-illustrations">
+                <div class="illustration-card">
+                    <svg class="line-illustration" viewBox="0 0 220 160" fill="none" stroke="currentColor"
+                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path class="draw-path" d="M30 130H190"></path>
+                        <path class="draw-path" d="M50 130V60H140V130"></path>
+                        <path class="draw-path" d="M60 60L95 30H160V60"></path>
+                        <path class="draw-path" d="M85 90H105"></path>
+                        <path class="draw-path" d="M120 90H135"></path>
+                        <path class="draw-path" d="M160 130V85H190V130"></path>
+                        <path class="draw-path" d="M168 92H184"></path>
+                    </svg>
+                    <div class="illustration-caption" data-i18n="illustration.station">محطة وقود ذكية</div>
+                </div>
+                <div class="illustration-card">
+                    <svg class="line-illustration" viewBox="0 0 220 160" fill="none" stroke="currentColor"
+                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path class="draw-path" d="M70 130V30H130V130"></path>
+                        <path class="draw-path" d="M85 55H115"></path>
+                        <path class="draw-path" d="M85 75H115"></path>
+                        <path class="draw-path" d="M70 30H130"></path>
+                        <path class="draw-path" d="M130 45H155C168 45 175 52 175 65V95"></path>
+                        <path class="draw-path" d="M175 95C175 108 167 115 155 115H145"></path>
+                        <path class="draw-path" d="M90 130H110"></path>
+                    </svg>
+                    <div class="illustration-caption" data-i18n="illustration.pump">مضخة وقود متصلة</div>
+                </div>
+                <div class="illustration-card">
+                    <svg class="line-illustration" viewBox="0 0 220 160" fill="none" stroke="currentColor"
+                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path class="draw-path" d="M30 110H150V70H30Z"></path>
+                        <path class="draw-path" d="M150 85H190V110H150Z"></path>
+                        <path class="draw-path" d="M50 110V130"></path>
+                        <path class="draw-path" d="M130 110V130"></path>
+                        <path class="draw-path" d="M165 110V130"></path>
+                        <path class="draw-path" d="M60 70V50H120V70"></path>
+                    </svg>
+                    <div class="illustration-caption" data-i18n="illustration.fleet">أسطول التزويد</div>
                 </div>
             </div>
         </div>
@@ -1089,7 +1578,7 @@
     <!-- الميزات الرئيسية -->
     <section class="section section-alt">
         <div class="container">
-            <h3 class="section-title" style="text-align:center;">الميزات المتقدمة للنظام</h3>
+            <h3 class="section-title" style="text-align:center;" data-i18n="section.features">الميزات المتقدمة للنظام</h3>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="card-icon">
@@ -1223,7 +1712,7 @@
     <!-- الأنظمة الفرعية -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">الأنظمة الفرعية (40+ نظام)</h2>
+            <h2 class="section-title" data-i18n="section.systems">الأنظمة الفرعية (40+ نظام)</h2>
             <div class="systems-grid">
                 <div class="system-item">
                     <i class="fas fa-tasks system-icon"></i>
@@ -1292,8 +1781,9 @@
     <!-- محطات الوقود -->
     <section class="section section-alt">
         <div class="container">
-            <h2 class="section-title">شبكة محطات "شريان الخط"</h2>
-            <p style="text-align: center; margin-bottom: 25px; font-size: 1rem; color: #bbdefb;">
+            <h2 class="section-title" data-i18n="section.stations">شبكة محطات "شريان الخط"</h2>
+            <p style="text-align: center; margin-bottom: 25px; font-size: 1rem; color: var(--muted);"
+                data-i18n="stations.distribution">
                 30 محطة وقود موزعة في جميع أنحاء المملكة
             </p>
             <div class="stations-container">
@@ -1383,9 +1873,9 @@
             </div>
 
             <div style="text-align: center; margin-top: 25px;">
-                <p style="color: #bbdefb; font-size: 0.9rem; line-height: 1.6;">
-                    <i class="fas fa-info-circle" style="color: var(--accent-blue); margin-left: 8px;"></i>
-                    شبكة محطات "شريان الخط" تغطي 13 منطقة إدارية وتخدم 1000+ مركبة يومياً
+                <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6;">
+                    <i class="fas fa-info-circle" style="color: var(--accent-blue); margin-inline-start: 8px;"></i>
+                    <span data-i18n="stations.network_note">شبكة محطات "شريان الخط" تغطي 13 منطقة إدارية وتخدم 1000+ مركبة يومياً</span>
                 </p>
             </div>
         </div>
@@ -1394,9 +1884,10 @@
     <!-- التتبع الحي -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">التتبع الحي والمراقبة</h2>
+            <h2 class="section-title" data-i18n="section.tracking">التتبع الحي والمراقبة</h2>
             <div class="live-tracking">
-                <p style="text-align: center; font-size: 1rem; margin-bottom: 20px; color: #bbdefb;">
+                <p style="text-align: center; font-size: 1rem; margin-bottom: 20px; color: var(--muted);"
+                    data-i18n="tracking.summary">
                     نظام تتبع مباشر لـ 1500+ مركبة نشطة
                 </p>
                 <div class="tracking-map">
@@ -1426,10 +1917,17 @@
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
-                    <span style="color: #4caf50;"><i class="fas fa-circle"></i> شحنات برية</span> &nbsp;&nbsp;
-                    <span style="color: #ff9800;"><i class="fas fa-circle"></i> في المحطات</span> &nbsp;&nbsp;
-                    <span style="color: #f44336;"><i class="fas fa-circle"></i> ناقلات وقود</span> &nbsp;&nbsp;
-                    <span style="color: #9c27b0;"><i class="fas fa-circle"></i> شحنات بحرية</span>
+                    <span style="color: #4caf50;"><i class="fas fa-circle"></i> <span
+                            data-i18n="tracking.legend.road">شحنات برية</span></span>
+                    &nbsp;&nbsp;
+                    <span style="color: #ff9800;"><i class="fas fa-circle"></i> <span
+                            data-i18n="tracking.legend.station">في المحطات</span></span>
+                    &nbsp;&nbsp;
+                    <span style="color: #f44336;"><i class="fas fa-circle"></i> <span
+                            data-i18n="tracking.legend.fuel">ناقلات وقود</span></span>
+                    &nbsp;&nbsp;
+                    <span style="color: #9c27b0;"><i class="fas fa-circle"></i> <span
+                            data-i18n="tracking.legend.sea">شحنات بحرية</span></span>
                 </div>
             </div>
         </div>
@@ -1439,7 +1937,7 @@
     <section class="section section-alt">
         <div class="container">
             <div class="companies-section">
-                <h2 class="section-title">شبكة شركات النقل (500+ شركة)</h2>
+                <h2 class="section-title" data-i18n="section.companies">شبكة شركات النقل (500+ شركة)</h2>
                 <div class="companies-grid">
                     <div class="company-card">
                         <div class="company-header">
@@ -1483,12 +1981,13 @@
 
                 <div style="text-align: center; margin-top: 25px;">
                     <div class="progress-container">
-                        <p style="color: #bbdefb; font-size: 0.9rem; margin-bottom: 8px;">نسبة التغطية الجغرافية</p>
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 8px;"
+                            data-i18n="companies.coverage_label">نسبة التغطية الجغرافية</p>
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 95%"></div>
                         </div>
-                        <p style="color: var(--accent-blue); font-weight: 700; font-size: 1rem;">95% تغطية جميع مناطق
-                            المملكة</p>
+                        <p style="color: var(--accent-blue); font-weight: 700; font-size: 1rem;"
+                            data-i18n="companies.coverage_value">95% تغطية جميع مناطق المملكة</p>
                     </div>
                 </div>
             </div>
@@ -1499,7 +1998,7 @@
     <div class="login-btn-container">
         <button class="login-btn" onclick="employeeLogin()">
             <i class="fas fa-sign-in-alt"></i>
-            دخول الموظفين
+            <span data-i18n="ui.employee_login">دخول الموظفين</span>
         </button>
     </div>
 
@@ -1508,48 +2007,426 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>عن النظام</h4>
-                    <p>نظام نبراس هو النظام المتكامل لإدارة وتتبع طلبات النقليات التابع لشركة البحيرة العربية.</p>
-                    <p>يدعم جميع أنواع النقل البري، البحري، الجوي.</p>
+                    <h4 data-i18n="footer.about">عن النظام</h4>
+                    <p data-i18n="footer.about_p1">نظام نبراس هو النظام المتكامل لإدارة وتتبع طلبات النقليات التابع لشركة البحيرة العربية.</p>
+                    <p data-i18n="footer.about_p2">يدعم جميع أنواع النقل البري، البحري، الجوي.</p>
                 </div>
 
                 <div class="footer-section">
-                    <h4>معلومات الاتصال</h4>
+                    <h4 data-i18n="footer.contact">معلومات الاتصال</h4>
                     <a href="tel:+966547081118"><i class="fas fa-phone"></i>966547081118+</a>
                     <a href="n.n.66@hotmail.com"><i class="fas fa-envelope"></i> n.n.66@hotmail.com</a>
-                    <a href="#"><i class="fas fa-map-marker-alt"></i> حائل - السعودية</a>
-                    <a href="#"><i class="fas fa-building"></i> شركة البحيرة العربية</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer.location">حائل - السعودية</span></a>
+                    <a href="#"><i class="fas fa-building"></i> <span data-i18n="footer.company">شركة البحيرة العربية</span></a>
                 </div>
 
                 <div class="footer-section">
-                    <h4>روابط سريعة</h4>
-                    <a href="#"><i class="fas fa-info-circle"></i> عن الشركة</a>
-                    <a href="#"><i class="fas fa-network-wired"></i> شبكة المحطات</a>
-                    <a href="#"><i class="fas fa-handshake"></i> الشركاء</a>
-                    <a href="#"><i class="fas fa-headset"></i> الدعم الفني</a>
+                    <h4 data-i18n="footer.quick_links">روابط سريعة</h4>
+                    <a href="#"><i class="fas fa-info-circle"></i> <span data-i18n="footer.link.about">عن الشركة</span></a>
+                    <a href="#"><i class="fas fa-network-wired"></i> <span data-i18n="footer.link.stations">شبكة المحطات</span></a>
+                    <a href="#"><i class="fas fa-handshake"></i> <span data-i18n="footer.link.partners">الشركاء</span></a>
+                    <a href="#"><i class="fas fa-headset"></i> <span data-i18n="footer.link.support">الدعم الفني</span></a>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>
+                <p data-i18n="footer.copyright">
                     © <span class="copyright-year" id="currentYear">2023</span> نظام نبراس - شركة البحيرة العربية
                     للنقليات. جميع الحقوق محفوظة.
                     <br>
                     هذا النظام حاصل على شهادة ISO 9001:2015 وشهادة ISO 27001
                 </p>
-                <p style="margin-top: 10px; font-size: 0.8rem; color: #90caf9;">
-                    <i class="fas fa-server" style="margin-right: 15px;"></i>
-                    مستضاف على خوادم سحابية آمنة
+                <p style="margin-top: 10px; font-size: 0.8rem; color: var(--muted);">
+                    <i class="fas fa-server" style="margin-inline-end: 15px;"></i>
+                    <span data-i18n="footer.hosting">مستضاف على خوادم سحابية آمنة</span>
                 </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // تحديث السنة تلقائياً
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const translations = {
+            ar: {
+                'meta.title': 'نظام نبراس لإدارة وتتبع الطلبات | شركة البحيرة العربية',
+                'meta.description': 'نظام نبراس من شركة البحيرة العربية لإدارة وتتبع طلبات الوقود، الإشراف على العمليات، وتحسين كفاءة التوزيع في الوقت الحقيقي.',
+                'ui.language': 'اللغة',
+                'ui.theme': 'المظهر',
+                'theme.light': 'فاتح',
+                'theme.default': 'افتراضي',
+                'theme.dark': 'داكن',
+                'logo.main': 'نظام نبراس المتكامل',
+                'logo.sub': 'شركة البحيرة العربية للنقليات',
+                'hero.title': 'نظام نبراس المتكامل لإدارة النقليات',
+                'hero.subtitle': 'نظام متطور لإدارة وتتبع جميع عمليات النقل بمختلف أنواعها، مع تركيز خاص على نقل المحروقات عبر شبكة محطات "شريان الخط" البالغة 30 محطة موزعة في جميع أنحاء المملكة. النظام يدعم 40+ نظام فرعي ويخدم 500+ شركة نقل شريكة.',
+                'counter.stations': 'محطة وقود',
+                'counter.companies': 'شركة نقل',
+                'counter.vehicles': 'مركبة نشطة',
+                'counter.systems': 'نظام فرعي',
+                'section.features': 'الميزات المتقدمة للنظام',
+                'section.systems': 'الأنظمة الفرعية (40+ نظام)',
+                'section.stations': 'شبكة محطات "شريان الخط"',
+                'section.tracking': 'التتبع الحي والمراقبة',
+                'section.companies': 'شبكة شركات النقل (500+ شركة)',
+                'stations.distribution': '30 محطة وقود موزعة في جميع أنحاء المملكة',
+                'stations.network_note': 'شبكة محطات "شريان الخط" تغطي 13 منطقة إدارية وتخدم 1000+ مركبة يومياً',
+                'tracking.summary': 'نظام تتبع مباشر لـ 1500+ مركبة نشطة',
+                'tracking.legend.road': 'شحنات برية',
+                'tracking.legend.station': 'في المحطات',
+                'tracking.legend.fuel': 'ناقلات وقود',
+                'tracking.legend.sea': 'شحنات بحرية',
+                'companies.coverage_label': 'نسبة التغطية الجغرافية',
+                'companies.coverage_value': '95% تغطية جميع مناطق المملكة',
+                'illustration.station': 'محطة وقود ذكية',
+                'illustration.pump': 'مضخة وقود متصلة',
+                'illustration.fleet': 'أسطول التزويد',
+                'ui.employee_login': 'دخول الموظفين',
+                'footer.about': 'عن النظام',
+                'footer.about_p1': 'نظام نبراس هو النظام المتكامل لإدارة وتتبع طلبات النقليات التابع لشركة البحيرة العربية.',
+                'footer.about_p2': 'يدعم جميع أنواع النقل البري، البحري، الجوي.',
+                'footer.contact': 'معلومات الاتصال',
+                'footer.quick_links': 'روابط سريعة',
+                'footer.location': 'حائل - السعودية',
+                'footer.company': 'شركة البحيرة العربية',
+                'footer.link.about': 'عن الشركة',
+                'footer.link.stations': 'شبكة المحطات',
+                'footer.link.partners': 'الشركاء',
+                'footer.link.support': 'الدعم الفني',
+                'footer.copyright': '© {year} نظام نبراس - شركة البحيرة العربية للنقليات. جميع الحقوق محفوظة.<br>هذا النظام حاصل على شهادة ISO 9001:2015 وشهادة ISO 27001',
+                'footer.hosting': 'مستضاف على خوادم سحابية آمنة',
+                'notify.auto_login': 'تم تسجيل الدخول تلقائيا',
+                'notify.login': 'تم التعرف على جلسة نشطة، جاري فتح النظام...',
+                'notify.redirect': 'جارٍ التوجيه إلى بوابة الدخول للموظفين...',
+                'notify.logout': 'تم تسجيل الخروج'
+            },
+            en: {
+                'meta.title': 'Nibras Order Tracking & Transport Management | Al-Buhaira Arabian',
+                'meta.description': 'Nibras system from Al-Buhaira Arabian to manage and track fuel orders, monitor operations, and improve distribution efficiency in real time.',
+                'ui.language': 'Language',
+                'ui.theme': 'Appearance',
+                'theme.light': 'Light',
+                'theme.default': 'Default',
+                'theme.dark': 'Dark',
+                'logo.main': 'Nibras Integrated System',
+                'logo.sub': 'Al-Buhaira Arabian Transport Co.',
+                'hero.title': 'Nibras Integrated Transport Management',
+                'hero.subtitle': 'An advanced system to manage and track all transport operations, with a special focus on fuel distribution through the "Shiryan Al-Khatt" network of 30 stations across the Kingdom. Supports 40+ sub-systems and serves 500+ partner carriers.',
+                'counter.stations': 'Fuel Stations',
+                'counter.companies': 'Transport Companies',
+                'counter.vehicles': 'Active Vehicles',
+                'counter.systems': 'Sub-systems',
+                'section.features': 'Advanced System Features',
+                'section.systems': 'Sub-Systems (40+ Systems)',
+                'section.stations': 'Shiryan Al-Khatt Stations Network',
+                'section.tracking': 'Live Tracking & Monitoring',
+                'section.companies': 'Transport Companies Network (500+)',
+                'stations.distribution': '30 fuel stations across the Kingdom',
+                'stations.network_note': 'Shiryan Al-Khatt stations cover 13 administrative regions and serve 1,000+ vehicles daily',
+                'tracking.summary': 'Live tracking for 1,500+ active vehicles',
+                'tracking.legend.road': 'Road shipments',
+                'tracking.legend.station': 'At stations',
+                'tracking.legend.fuel': 'Fuel tankers',
+                'tracking.legend.sea': 'Sea shipments',
+                'companies.coverage_label': 'Geographic Coverage',
+                'companies.coverage_value': '95% coverage across the Kingdom',
+                'illustration.station': 'Smart Fuel Station',
+                'illustration.pump': 'Connected Fuel Pump',
+                'illustration.fleet': 'Supply Fleet',
+                'ui.employee_login': 'Employee Login',
+                'footer.about': 'About the System',
+                'footer.about_p1': 'Nibras is the integrated system for managing and tracking transport orders for Al-Buhaira Arabian.',
+                'footer.about_p2': 'Supports road, sea, and air transport.',
+                'footer.contact': 'Contact Info',
+                'footer.quick_links': 'Quick Links',
+                'footer.location': 'Hail, Saudi Arabia',
+                'footer.company': 'Al-Buhaira Arabian Co.',
+                'footer.link.about': 'About the Company',
+                'footer.link.stations': 'Stations Network',
+                'footer.link.partners': 'Partners',
+                'footer.link.support': 'Technical Support',
+                'footer.copyright': '© {year} Nibras System - Al-Buhaira Arabian Transport. All rights reserved.<br>This system is ISO 9001:2015 and ISO 27001 certified',
+                'footer.hosting': 'Hosted on secure cloud servers',
+                'notify.auto_login': 'Logged in automatically',
+                'notify.login': 'Active session detected, opening the system...',
+                'notify.redirect': 'Redirecting to the employee portal...',
+                'notify.logout': 'Logged out'
+            },
+            bn: {
+                'meta.title': 'নিবরাস অর্ডার ট্র্যাকিং ও পরিবহন ব্যবস্থাপনা | আল-বুহাইরা আরবিয়ান',
+                'meta.description': 'আল-বুহাইরা আরবিয়ান-এর নিবরাস সিস্টেম: জ্বালানি অর্ডার পরিচালনা ও ট্র্যাকিং, অপারেশন মনিটরিং এবং রিয়েল-টাইমে বিতরণ দক্ষতা বৃদ্ধি।',
+                'ui.language': 'ভাষা',
+                'ui.theme': 'থিম',
+                'theme.light': 'হালকা',
+                'theme.default': 'ডিফল্ট',
+                'theme.dark': 'ডার্ক',
+                'logo.main': 'নিবরাস সমন্বিত সিস্টেম',
+                'logo.sub': 'আল-বুহাইরা আরবিয়ান ট্রান্সপোর্ট কোম্পানি',
+                'hero.title': 'নিবরাস সমন্বিত পরিবহন ব্যবস্থাপনা',
+                'hero.subtitle': 'সমস্ত পরিবহন কার্যক্রম পরিচালনা ও ট্র্যাক করার উন্নত সিস্টেম, জ্বালানি পরিবহনে বিশেষ ফোকাসসহ। "শিরিয়ান আল-খাত" নেটওয়ার্কের ৩০টি স্টেশন জুড়ে সেবা দেয়। ৪০+ সাব-সিস্টেম সমর্থন করে এবং ৫০০+ পার্টনার পরিবহন কোম্পানিকে সেবা দেয়।',
+                'counter.stations': 'জ্বালানি স্টেশন',
+                'counter.companies': 'পরিবহন কোম্পানি',
+                'counter.vehicles': 'সক্রিয় যানবাহন',
+                'counter.systems': 'সাব-সিস্টেম',
+                'section.features': 'সিস্টেমের উন্নত বৈশিষ্ট্য',
+                'section.systems': 'সাব-সিস্টেম (৪০+)',
+                'section.stations': '"শিরিয়ান আল-খাত" স্টেশন নেটওয়ার্ক',
+                'section.tracking': 'লাইভ ট্র্যাকিং ও মনিটরিং',
+                'section.companies': 'পরিবহন কোম্পানি নেটওয়ার্ক (৫০০+)',
+                'stations.distribution': 'রাজ্যজুড়ে ৩০টি জ্বালানি স্টেশন',
+                'stations.network_note': '"শিরিয়ান আল-খাত" নেটওয়ার্ক ১৩টি প্রশাসনিক অঞ্চল কভার করে এবং দৈনিক ১,০০০+ যানবাহনকে সেবা দেয়',
+                'tracking.summary': '১,৫০০+ সক্রিয় যানবাহনের লাইভ ট্র্যাকিং',
+                'tracking.legend.road': 'স্থল পরিবহন',
+                'tracking.legend.station': 'স্টেশনে',
+                'tracking.legend.fuel': 'জ্বালানি ট্যাংকার',
+                'tracking.legend.sea': 'সমুদ্র পরিবহন',
+                'companies.coverage_label': 'ভৌগোলিক কভারেজ',
+                'companies.coverage_value': 'রাজ্যজুড়ে ৯৫% কভারেজ',
+                'illustration.station': 'স্মার্ট ফুয়েল স্টেশন',
+                'illustration.pump': 'কানেক্টেড ফুয়েল পাম্প',
+                'illustration.fleet': 'সরবরাহ বহর',
+                'ui.employee_login': 'কর্মচারী লগইন',
+                'footer.about': 'সিস্টেম সম্পর্কে',
+                'footer.about_p1': 'নিবরাস হলো আল-বুহাইরা আরবিয়ান-এর পরিবহন অর্ডার ব্যবস্থাপনা ও ট্র্যাকিংয়ের সমন্বিত সিস্টেম।',
+                'footer.about_p2': 'স্থল, সমুদ্র ও আকাশ পরিবহন সমর্থন করে।',
+                'footer.contact': 'যোগাযোগ',
+                'footer.quick_links': 'দ্রুত লিঙ্ক',
+                'footer.location': 'হাইল, সৌদি আরব',
+                'footer.company': 'আল-বুহাইরা আরবিয়ান',
+                'footer.link.about': 'কোম্পানি সম্পর্কে',
+                'footer.link.stations': 'স্টেশন নেটওয়ার্ক',
+                'footer.link.partners': 'অংশীদার',
+                'footer.link.support': 'প্রযুক্তিগত সহায়তা',
+                'footer.copyright': '© {year} নিবরাস সিস্টেম - আল-বুহাইরা আরবিয়ান ট্রান্সপোর্ট। সর্বস্বত্ব সংরক্ষিত।<br>এই সিস্টেম ISO 9001:2015 এবং ISO 27001 সার্টিফাইড',
+                'footer.hosting': 'সুরক্ষিত ক্লাউড সার্ভারে হোস্টেড',
+                'notify.auto_login': 'স্বয়ংক্রিয়ভাবে লগইন হয়েছে',
+                'notify.login': 'সক্রিয় সেশন পাওয়া গেছে, সিস্টেম খুলছে...',
+                'notify.redirect': 'কর্মচারী পোর্টালে রিডাইরেক্ট করা হচ্ছে...',
+                'notify.logout': 'লগআউট হয়েছে'
+            },
+            ur: {
+                'meta.title': 'نِبراس آرڈر ٹریکنگ و ٹرانسپورٹ مینجمنٹ | البحیرہ عربین',
+                'meta.description': 'البحیرہ عربین کا نِبراس سسٹم: فیول آرڈرز کی مینجمنٹ و ٹریکنگ، آپریشنز کی نگرانی اور ریئل ٹائم میں تقسیم کی کارکردگی بہتر بنانا۔',
+                'ui.language': 'زبان',
+                'ui.theme': 'انداز',
+                'theme.light': 'ہلکا',
+                'theme.default': 'ڈیفالٹ',
+                'theme.dark': 'گہرا',
+                'logo.main': 'نِبراس جامع نظام',
+                'logo.sub': 'البحیرہ عربین ٹرانسپورٹ کمپنی',
+                'hero.title': 'نِبراس جامع ٹرانسپورٹ مینجمنٹ',
+                'hero.subtitle': 'تمام نقل و حمل کے عمل کو منظم اور ٹریک کرنے کا جدید نظام، ایندھن کی ترسیل پر خصوصی توجہ کے ساتھ۔ "شریان الخط" کے 30 اسٹیشنز کے نیٹ ورک کے ذریعے پورے مملکت میں خدمت۔ 40+ ذیلی نظاموں کی سپورٹ اور 500+ شراکتی کمپنیوں کو خدمت۔',
+                'counter.stations': 'ایندھن اسٹیشن',
+                'counter.companies': 'ٹرانسپورٹ کمپنیاں',
+                'counter.vehicles': 'فعال گاڑیاں',
+                'counter.systems': 'ذیلی نظام',
+                'section.features': 'نظام کی جدید خصوصیات',
+                'section.systems': 'ذیلی نظام (40+)',
+                'section.stations': '"شریان الخط" اسٹیشن نیٹ ورک',
+                'section.tracking': 'لائیو ٹریکنگ و مانیٹرنگ',
+                'section.companies': 'ٹرانسپورٹ کمپنی نیٹ ورک (500+)',
+                'stations.distribution': 'مملکت بھر میں 30 ایندھن اسٹیشن',
+                'stations.network_note': '"شریان الخط" نیٹ ورک 13 انتظامی علاقوں کا احاطہ کرتا ہے اور روزانہ 1000+ گاڑیوں کو سروس دیتا ہے',
+                'tracking.summary': '1500+ فعال گاڑیوں کی لائیو ٹریکنگ',
+                'tracking.legend.road': 'بری ترسیلات',
+                'tracking.legend.station': 'اسٹیشن پر',
+                'tracking.legend.fuel': 'فیول ٹینکر',
+                'tracking.legend.sea': 'بحری ترسیلات',
+                'companies.coverage_label': 'جغرافیائی کوریج',
+                'companies.coverage_value': 'مملکت بھر میں 95% کوریج',
+                'illustration.station': 'سمارٹ فیول اسٹیشن',
+                'illustration.pump': 'کنیکٹڈ فیول پمپ',
+                'illustration.fleet': 'سپلائی فلیٹ',
+                'ui.employee_login': 'ملازمین لاگ اِن',
+                'footer.about': 'نظام کے بارے میں',
+                'footer.about_p1': 'نِبراس، البحیرہ عربین کے لیے نقل و حمل آرڈرز کی مینجمنٹ اور ٹریکنگ کا جامع نظام ہے۔',
+                'footer.about_p2': 'بری، بحری اور فضائی نقل و حمل کو سپورٹ کرتا ہے۔',
+                'footer.contact': 'رابطہ معلومات',
+                'footer.quick_links': 'فوری روابط',
+                'footer.location': 'حائل، سعودی عرب',
+                'footer.company': 'البحیرہ عربین',
+                'footer.link.about': 'کمپنی کے بارے میں',
+                'footer.link.stations': 'اسٹیشن نیٹ ورک',
+                'footer.link.partners': 'شراکت دار',
+                'footer.link.support': 'ٹیکنیکل سپورٹ',
+                'footer.copyright': '© {year} نِبراس سسٹم - البحیرہ عربین ٹرانسپورٹ۔ تمام حقوق محفوظ ہیں۔<br>یہ نظام ISO 9001:2015 اور ISO 27001 سرٹیفائیڈ ہے',
+                'footer.hosting': 'محفوظ کلاؤڈ سرورز پر ہوسٹ کیا گیا',
+                'notify.auto_login': 'خودکار طور پر لاگ اِن ہوگیا',
+                'notify.login': 'فعال سیشن ملا، نظام کھولا جا رہا ہے...',
+                'notify.redirect': 'ملازمین کے پورٹل کی طرف بھیجا جا رہا ہے...',
+                'notify.logout': 'لاگ آؤٹ ہوگیا'
+            },
+            hi: {
+                'meta.title': 'निब्रास ऑर्डर ट्रैकिंग और परिवहन प्रबंधन | अल-बुहैरा अरबियन',
+                'meta.description': 'अल-बुहैरा अरबियन का निब्रास सिस्टम: ईंधन ऑर्डर का प्रबंधन व ट्रैकिंग, संचालन की निगरानी और रियल-टाइम में वितरण दक्षता में सुधार।',
+                'ui.language': 'भाषा',
+                'ui.theme': 'रूप',
+                'theme.light': 'लाइट',
+                'theme.default': 'डिफ़ॉल्ट',
+                'theme.dark': 'डार्क',
+                'logo.main': 'निब्रास समेकित प्रणाली',
+                'logo.sub': 'अल-बुहैरा अरबियन ट्रांसपोर्ट कंपनी',
+                'hero.title': 'निब्रास समेकित परिवहन प्रबंधन',
+                'hero.subtitle': 'सभी परिवहन संचालन का प्रबंधन और ट्रैकिंग करने के लिए उन्नत सिस्टम, ईंधन परिवहन पर विशेष फोकस के साथ। "शिरयान अल-खत्त" नेटवर्क की 30 स्टेशनों के माध्यम से पूरे राज्य में सेवा। 40+ उप-प्रणालियों का समर्थन और 500+ साझेदार कंपनियों की सेवा।',
+                'counter.stations': 'ईंधन स्टेशन',
+                'counter.companies': 'परिवहन कंपनियाँ',
+                'counter.vehicles': 'सक्रिय वाहन',
+                'counter.systems': 'उप-प्रणालियाँ',
+                'section.features': 'सिस्टम की उन्नत विशेषताएँ',
+                'section.systems': 'उप-प्रणालियाँ (40+)',
+                'section.stations': '"शिरयान अल-खत्त" स्टेशन नेटवर्क',
+                'section.tracking': 'लाइव ट्रैकिंग और मॉनिटरिंग',
+                'section.companies': 'परिवहन कंपनी नेटवर्क (500+)',
+                'stations.distribution': 'राज्यभर में 30 ईंधन स्टेशन',
+                'stations.network_note': '"शिरयान अल-खत्त" नेटवर्क 13 प्रशासनिक क्षेत्रों को कवर करता है और रोज़ाना 1,000+ वाहनों को सेवा देता है',
+                'tracking.summary': '1,500+ सक्रिय वाहनों की लाइव ट्रैकिंग',
+                'tracking.legend.road': 'सड़क परिवहन',
+                'tracking.legend.station': 'स्टेशनों पर',
+                'tracking.legend.fuel': 'ईंधन टैंकर',
+                'tracking.legend.sea': 'समुद्री शिपमेंट',
+                'companies.coverage_label': 'भौगोलिक कवरेज',
+                'companies.coverage_value': 'राज्यभर में 95% कवरेज',
+                'illustration.station': 'स्मार्ट ईंधन स्टेशन',
+                'illustration.pump': 'कनेक्टेड ईंधन पंप',
+                'illustration.fleet': 'आपूर्ति बेड़ा',
+                'ui.employee_login': 'कर्मचारी लॉगिन',
+                'footer.about': 'सिस्टम के बारे में',
+                'footer.about_p1': 'निब्रास अल-बुहैरा अरबियन के लिए परिवहन ऑर्डर प्रबंधन और ट्रैकिंग का समेकित सिस्टम है।',
+                'footer.about_p2': 'सड़क, समुद्री और हवाई परिवहन का समर्थन करता है।',
+                'footer.contact': 'संपर्क जानकारी',
+                'footer.quick_links': 'त्वरित लिंक',
+                'footer.location': 'हाइल, सऊदी अरब',
+                'footer.company': 'अल-बुहैरा अरबियन',
+                'footer.link.about': 'कंपनी के बारे में',
+                'footer.link.stations': 'स्टेशन नेटवर्क',
+                'footer.link.partners': 'साझेदार',
+                'footer.link.support': 'तकनीकी सहायता',
+                'footer.copyright': '© {year} निब्रास सिस्टम - अल-बुहैरा अरबियन ट्रांसपोर्ट। सर्वाधिकार सुरक्षित।<br>यह सिस्टम ISO 9001:2015 और ISO 27001 प्रमाणित है',
+                'footer.hosting': 'सुरक्षित क्लाउड सर्वरों पर होस्टेड',
+                'notify.auto_login': 'स्वचालित रूप से लॉगिन हुआ',
+                'notify.login': 'सक्रिय सत्र मिला, सिस्टम खोला जा रहा है...',
+                'notify.redirect': 'कर्मचारी पोर्टल पर भेजा जा रहा है...',
+                'notify.logout': 'लॉगआउट हो गया'
+            }
+        };
 
-      
+        const dirMap = { ar: 'rtl', ur: 'rtl', en: 'ltr', bn: 'ltr', hi: 'ltr' };
+        let currentLang = 'ar';
+        let typewriterTimer = null;
+        let themeTimer = null;
+
+        function setYear() {
+            const yearEl = document.getElementById('currentYear');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+        }
+
+        function getI18n(key) {
+            return (translations[currentLang] && translations[currentLang][key]) ||
+                (translations.ar && translations.ar[key]) ||
+                '';
+        }
+
+        function translateElement(el, lang) {
+            const key = el.getAttribute('data-i18n');
+            const text = (translations[lang] && translations[lang][key]) ||
+                (translations.ar && translations.ar[key]);
+            if (!text) return;
+
+            if (key === 'footer.copyright') {
+                const year = new Date().getFullYear();
+                el.innerHTML = text.replace('{year}', `<span class="copyright-year" id="currentYear">${year}</span>`);
+                return;
+            }
+
+            el.textContent = text;
+        }
+
+        function typeHeroTitle(text) {
+            const heroTitle = document.querySelector('.hero h1');
+            if (!heroTitle) return;
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                heroTitle.textContent = text;
+                return;
+            }
+
+            if (typewriterTimer) {
+                clearTimeout(typewriterTimer);
+            }
+
+            heroTitle.textContent = '';
+            let i = 0;
+
+            const step = () => {
+                if (i < text.length) {
+                    heroTitle.textContent += text.charAt(i);
+                    i += 1;
+                    typewriterTimer = setTimeout(step, 35);
+                }
+            };
+
+            typewriterTimer = setTimeout(step, 250);
+        }
+
+        function applyLanguage(lang, { persist = true } = {}) {
+            currentLang = lang;
+            const html = document.documentElement;
+            const dir = dirMap[lang] || 'rtl';
+
+            html.setAttribute('lang', lang);
+            html.setAttribute('dir', dir);
+
+            document.body.classList.remove('lang-ar', 'lang-en', 'lang-bn', 'lang-ur', 'lang-hi');
+            document.body.classList.add(`lang-${lang}`);
+
+            document.querySelectorAll('[data-lang]').forEach((btn) => {
+                const active = btn.dataset.lang === lang;
+                btn.classList.toggle('active', active);
+                btn.setAttribute('aria-pressed', active);
+            });
+
+            document.querySelectorAll('[data-i18n]').forEach((el) => translateElement(el, lang));
+
+            document.title = getI18n('meta.title') || document.title;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.setAttribute('content', getI18n('meta.description') || metaDesc.getAttribute('content'));
+            }
+
+            setYear();
+
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                typeHeroTitle(heroTitle.textContent);
+            }
+
+            if (persist) {
+                localStorage.setItem('lang', lang);
+            }
+        }
+
+        function applyTheme(theme, { persist = true } = {}) {
+            document.body.dataset.theme = theme;
+
+            document.querySelectorAll('[data-theme]').forEach((btn) => {
+                const active = btn.dataset.theme === theme;
+                btn.classList.toggle('active', active);
+                btn.setAttribute('aria-pressed', active);
+            });
+
+            document.body.classList.add('theme-transition');
+            if (themeTimer) {
+                clearTimeout(themeTimer);
+            }
+            themeTimer = setTimeout(() => {
+                document.body.classList.remove('theme-transition');
+            }, 800);
+
+            if (persist) {
+                localStorage.setItem('theme', theme);
+            }
+        }
+
         // عرض إشعار
         function showNotification(message) {
             const notification = document.getElementById('notification');
@@ -1563,6 +2440,20 @@
 
         // إضافة تأثيرات حركية عند التحميل
         document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedLang = localStorage.getItem('lang') || 'ar';
+
+            applyTheme(savedTheme, { persist: false });
+            applyLanguage(savedLang, { persist: false });
+
+            document.querySelectorAll('[data-theme]').forEach((btn) => {
+                btn.addEventListener('click', () => applyTheme(btn.dataset.theme));
+            });
+
+            document.querySelectorAll('[data-lang]').forEach((btn) => {
+                btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+            });
+
             // تحريك المركبات
             const vehicles = document.querySelectorAll('.vehicle');
             vehicles.forEach((vehicle, index) => {
@@ -1590,22 +2481,10 @@
                 observer.observe(card);
             });
 
-            // تأثير الكتابة للنص الرئيسي
             const heroTitle = document.querySelector('.hero h1');
-            const originalText = heroTitle.textContent;
-            heroTitle.textContent = '';
-            let i = 0;
-
-            function typeWriter() {
-                if (i < originalText.length) {
-                    heroTitle.textContent += originalText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 40);
-                }
+            if (heroTitle) {
+                typeHeroTitle(heroTitle.textContent);
             }
-
-            // بدء تأثير الكتابة بعد نصف ثانية
-            setTimeout(typeWriter, 500);
         });
 
         // تأثير عند التمرير
@@ -1619,7 +2498,6 @@
                 shape.style.transform = `translateY(${rate * (index + 1) * 0.03}px)`;
             });
         });
-
     </script>
 <script>
     /* =========================
@@ -1648,13 +2526,13 @@
         if (valid) {
             toggleLoginButton(false);
             if (notifyOnLogin) {
-                showNotification('تم تسجيل الدخول تلقائيا');
+                showNotification(getI18n('notify.auto_login'));
             }
             window.parent.postMessage('employee_login', '*');
         } else {
             toggleLoginButton(true);
             if (notifyOnLogout) {
-                showNotification('تم تسجيل الخروج');
+                showNotification(getI18n('notify.logout'));
             }
         }
     }
@@ -1665,9 +2543,9 @@
     ========================= */
     function employeeLogin() {
         if (hasValidToken()) {
-            showNotification('تم التعرف على جلسة نشطة، جاري فتح النظام...');
+            showNotification(getI18n('notify.login'));
         } else {
-            showNotification('جارٍ التوجيه إلى بوابة الدخول للموظفين...');
+            showNotification(getI18n('notify.redirect'));
         }
 
         window.parent.postMessage('employee_login', '*');
