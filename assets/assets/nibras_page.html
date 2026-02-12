@@ -75,8 +75,18 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             text-decoration: none;
+        }
+
+        .logo-image {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 18px rgba(15, 30, 70, 0.2);
         }
 
         .logo-icon {
@@ -94,9 +104,7 @@
             text-align: center;
             font-size: 1.8rem;
             font-weight: 900;
-            background: linear-gradient(to right, var(--accent-blue), #64b5f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--heading);
             line-height: 1.2;
         }
 
@@ -1116,7 +1124,7 @@
         }
 
         .logo-main {
-            background: linear-gradient(to right, var(--accent-blue), var(--light-blue));
+            color: var(--heading);
         }
 
         .logo-sub {
@@ -1451,7 +1459,9 @@
     <nav class="navbar">
         <div class="container nav-content">
             <a href="#" class="logo">
-                <i class="fas fa-satellite-dish logo-icon"></i>
+                <img class="logo-image" src="images/logo.png" alt="Nibras Logo"
+                    onerror="this.remove(); const fallback = document.querySelector('.logo-icon-fallback'); if (fallback) fallback.style.display = 'inline-flex';">
+                <i class="fas fa-satellite-dish logo-icon logo-icon-fallback" style="display: none;"></i>
                 <div class="logo-text">
                     <div class="logo-main" data-i18n="logo.main">نظام نبراس المتكامل</div>
                     <div class="logo-sub" data-i18n="logo.sub">شركة البحيرة العربية للنقليات</div>
