@@ -57,8 +57,22 @@
     const analytics = getAnalytics(app);
   </script>
 
+  <!-- Firebase Messaging Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/firebase-messaging-sw.js');
+      });
+    }
+  </script>
+
+  <!-- Force HTML renderer for Google Maps on Web -->
+  <script>
+    window.flutterWebRenderer = "html";
+  </script>
+
   <!-- Flutter bootstrap -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrZFB8yQOESUT7q2Bm2ARtI9kQ34KrEwg"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd10UMlFnKBboXMiPxOZZ1Ig1Bceu0J6s"></script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 
