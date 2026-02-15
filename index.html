@@ -9,23 +9,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <!-- ✅ Title (SEO) -->
+  <!-- Title -->
   <title>نظام نبراس لإدارة وتتبع الطلبات | شركة البحيرة العربية</title>
 
-  <!-- ✅ Meta Description -->
+  <!-- Meta Description -->
   <meta name="description"
     content="نظام نبراس من شركة البحيرة العربية لإدارة وتتبع طلبات الوقود، الإشراف على العمليات، وتحسين كفاءة التوزيع في الوقت الحقيقي.">
 
-  <!-- ✅ SEO -->
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PWA / Mobile -->
+  <!-- PWA -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="نظام نبراس">
 
-  <!-- ✅ Favicon (Google Approved) -->
+  <!-- Icons -->
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="192x192" href="/icons/Icon-192.png">
@@ -33,29 +32,28 @@
   <!-- Manifest -->
   <link rel="manifest" href="/manifest.json">
 
-  <!-- Flutter renderer -->
+  <!-- Force HTML renderer -->
   <meta name="flutter-web-renderer" content="html">
+
+  <script>
+    window.flutterWebRenderer = "html";
+  </script>
+
+  <!-- Google Maps Map ID -->
+  <script>
+    window.GOOGLE_MAPS_MAP_ID = "91aedc28da83b4c9d9692050";
+  </script>
+
+  <!-- ✅ Google Maps JS -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCayUZhpM7kmI4rxeg-URtOBjk5137XLS4&v=weekly&libraries=marker&map_ids=91aedc28da83b4c9d9692050">
+    </script>
+
 </head>
 
 <body>
-  <!-- Firebase -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyBrZFB8yQOESUT7q2Bm2ARtI9kQ34KrEwg",
-      authDomain: "albuhairaalarabia2026.firebaseapp.com",
-      projectId: "albuhairaalarabia2026",
-      storageBucket: "albuhairaalarabia2026.firebasestorage.app",
-      messagingSenderId: "843078322062",
-      appId: "1:843078322062:web:4986be05fb82bf12b686df",
-      measurementId: "G-87D3N9N43R"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
+  <!-- Firebase is initialized by flutterfire in Dart (avoid duplicate app init) -->
 
   <!-- Firebase Messaging Service Worker -->
   <script>
@@ -66,14 +64,9 @@
     }
   </script>
 
-  <!-- Force HTML renderer for Google Maps on Web -->
-  <script>
-    window.flutterWebRenderer = "html";
-  </script>
-
   <!-- Flutter bootstrap -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd10UMlFnKBboXMiPxOZZ1Ig1Bceu0J6s"></script>
   <script src="flutter_bootstrap.js" async></script>
+
 </body>
 
 </html>
