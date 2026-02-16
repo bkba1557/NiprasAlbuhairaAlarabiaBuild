@@ -14,11 +14,42 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
-  const notificationTitle = payload?.notification?.title || 'إشعار';
+  const data = (payload && payload.data) || {};
+  const notificationTitle =
+    (payload && payload.notification && payload.notification.title) ||
+    data.title ||
+    data.subject ||
+    '\u0625\u0634\u0639\u0627\u0631';
   const notificationOptions = {
-    body: payload?.notification?.body || '',
+    body:
+      (payload && payload.notification && payload.notification.body) ||
+      data.body ||
+      data.message ||
+      '',
     icon: '/icons/Icon-192.png',
+    badge: '/icons/Icon-192.png',
+    silent: false,
+    data: data,
   };
 
   self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    clients
+      .matchAll({ type: 'window', includeUncontrolled: true })
+      .then((clientList) => {
+        for (const client of clientList) {
+          if (client.url && 'focus' in client) {
+            return client.focus();
+          }
+        }
+        if (clients.openWindow) {
+          return clients.openWindow('/');
+        }
+        return undefined;
+      }),
+  );
 });
