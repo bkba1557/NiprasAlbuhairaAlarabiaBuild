@@ -37,17 +37,30 @@ messaging.onBackgroundMessage((payload) => {
 
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
+  const data = (event.notification && event.notification.data) || {};
+  const conversationId =
+    (data && data.conversationId && String(data.conversationId)) || '';
+  const isChat = data && data.type === 'chat_message' && conversationId;
+  const targetUrl = isChat
+    ? '/#/chat/conversation?conversationId=' +
+      encodeURIComponent(conversationId)
+    : '/';
+
   event.waitUntil(
     clients
       .matchAll({ type: 'window', includeUncontrolled: true })
       .then((clientList) => {
         for (const client of clientList) {
-          if (client.url && 'focus' in client) {
+          if (
+            client.url &&
+            client.url.includes(self.location.origin) &&
+            'focus' in client
+          ) {
             return client.focus();
           }
         }
         if (clients.openWindow) {
-          return clients.openWindow('/');
+          return clients.openWindow(targetUrl);
         }
         return undefined;
       }),
