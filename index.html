@@ -44,10 +44,22 @@
     window.GOOGLE_MAPS_MAP_ID = "91aedc28da83b4c9d9692050";
   </script>
 
-  <!-- ✅ Google Maps JS -->
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCayUZhpM7kmI4rxeg-URtOBjk5137XLS4&v=weekly&libraries=marker&map_ids=91aedc28da83b4c9d9692050">
-    </script>
+  <!-- Google Maps JS is lazy-loaded only on map screens -->
+  <script>
+    document.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
+    }, { capture: true });
+
+    document.addEventListener('keydown', function (event) {
+      const isKeyboardContextMenu =
+        event.key === 'ContextMenu' || (event.shiftKey && event.key === 'F10');
+
+      if (isKeyboardContextMenu) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    }, { capture: true });
+  </script>
 
 </head>
 
