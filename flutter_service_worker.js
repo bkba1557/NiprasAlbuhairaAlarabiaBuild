@@ -3,8 +3,8 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "441f2334c8c6f921189b36e99da1df5d",
-"assets/AssetManifest.bin.json": "99c78d1332816e45e457c212c0cd3437",
+const RESOURCES = {"assets/AssetManifest.bin": "b9eb2249fa97002712ae9c83ef461fab",
+"assets/AssetManifest.bin.json": "c23263f81693e0fc40980f4b59d8f06a",
 "assets/assets/fonts/Arial.ttf": "fa3228aadde0db988e1822c2f736c131",
 "assets/assets/fonts/Cairo-Bold.ttf": "08f051a1822e014b22374926f1406d01",
 "assets/assets/fonts/Cairo-Regular.ttf": "5dacd3d88fa294c5c6263d4041a34935",
@@ -14,6 +14,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "441f2334c8c6f921189b36e99da1df5d
 "assets/assets/icons/whatsapp.svg": "3d135911df7a639ee40764787ee6c5c4",
 "assets/assets/images/logo.png": "5cb5409f3f9063ad0d532ce2cf38a2d3",
 "assets/assets/images/logo1.png": "f12948e1c0a39f5e98da7a503084ba90",
+"assets/assets/images/saudi_riyal_symbol.svg": "1f071ebdddf751f7ecd52cedf200adb7",
 "assets/assets/nibras_page.html": "63f8115ec2664573f51331240fcc9aac",
 "assets/assets/videos/v1.mp4": "f80602da31095ddee3c155a6dc9d7f4a",
 "assets/FontManifest.json": "793dfde5363a1d6d684c0e6d50f54645",
@@ -44,14 +45,14 @@ const RESOURCES = {"assets/AssetManifest.bin": "441f2334c8c6f921189b36e99da1df5d
 "favicon.png": "f12948e1c0a39f5e98da7a503084ba90",
 "firebase-messaging-sw.js": "5586c703888f6aca0f7bdf25ee527e69",
 "flutter.js": "24bc71911b75b5f8135c949e27a2984e",
-"flutter_bootstrap.js": "30add71b34c5a68b175143ebd956dfec",
+"flutter_bootstrap.js": "6ea344180aa48863d9f3d1d6608d4067",
 "icons/Icon-192.png": "364c177967135ce7a0261da8473927b6",
 "icons/Icon-512.png": "364c177967135ce7a0261da8473927b6",
 "icons/Icon-maskable-192.png": "f12948e1c0a39f5e98da7a503084ba90",
 "icons/Icon-maskable-512.png": "f12948e1c0a39f5e98da7a503084ba90",
 "index.html": "83ae46fe266999a164af8ae3626678f8",
 "/": "83ae46fe266999a164af8ae3626678f8",
-"main.dart.js": "18487c95acb7be75fecb9b555128d69d",
+"main.dart.js": "c35abe1350029a4684669563eb755c78",
 "manifest.json": "dce81c380ce217e1b57bcdb787f662bd",
 "version.json": "3a0b670564e2b24f90099d49202da21d",
 "videos/v1.mp4": "f80602da31095ddee3c155a6dc9d7f4a"};
