@@ -55,7 +55,8 @@
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCayUZhpM7kmI4rxeg-URtOBjk5137XLS4&v=weekly"
     onload="window.__googleMapsLoadState = (window.google && window.google.maps) ? 'ready' : 'loaded_no_maps'; if (window.__googleMapsLoadState !== 'ready' && !window.__googleMapsLoadError) { window.__googleMapsLoadError = 'Google Maps script loaded but google.maps is unavailable.'; }"
-    onerror="window.__googleMapsLoadState = 'load_error'; window.__googleMapsLoadError = 'Failed to load Google Maps JavaScript API.';">
+    onerror="window.__googleMapsLoadState = 'load_error'; window.__googleMapsLoadError = 'Failed to load Google Maps JavaScript API.';"
+    async defer>
   </script>
   <script>
     document.addEventListener('contextmenu', function (event) {
